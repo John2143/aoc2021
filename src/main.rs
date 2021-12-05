@@ -29,4 +29,32 @@ fn main() {
         (code::p24::a, code::p24::b),
         (code::p25::a, code::p25::b),
     ];
+
+    let day: usize = match std::env::args().nth(1) {
+        Some(d) => match d.parse() {
+            Ok(d) => d,
+            Err(_) => {
+                println!(
+                    "First argument must be a digit between 1 and 25, got '{}'",
+                    d
+                );
+                return;
+            }
+        },
+        None => {
+            println!("First argument must be a digit between 1 and 25");
+            return;
+        }
+    };
+
+    let (a, b) = match lookup_table.get(day.wrapping_sub(1)) {
+        Some(x) => x,
+        None => {
+            println!("Day #{} is out of bounds", day);
+            return;
+        }
+    };
+
+    (a)();
+    (b)();
 }
