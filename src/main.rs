@@ -2,6 +2,6 @@ mod code;
 pub mod shared;
 
 fn main() {
-    code::p1::a();
-    code::p1::b();
+    code::p2::a();
+    code::p2::b();
 }
